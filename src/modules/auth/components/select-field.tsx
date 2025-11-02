@@ -5,7 +5,7 @@ import { Controller } from 'react-hook-form';
 
 const SelectField = ({ name, label, control, options, placeholder, error, required }: SelectFieldProps) => {
     return (
-        <div className='space-y-2'>
+        <div className='space-y-2 w-84'>
             <Label htmlFor={name} className='form-label'>
                 {label}
             </Label>

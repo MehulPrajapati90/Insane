@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import NavItems from './nav-items';
 import UseDropDown from './use-drop-down';
+import { UserButton } from '@clerk/nextjs';
 
 const Header = () => {
     return (
@@ -13,7 +14,10 @@ const Header = () => {
                 <nav className='hidden sm:block'>
                     <NavItems />
                 </nav>
-                <UseDropDown />
+                <div className='flex gap-1'>
+                    <UserButton />
+                    <UseDropDown />
+                </div>
             </div>
         </header>
     )
