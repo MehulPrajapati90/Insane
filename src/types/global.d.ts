@@ -215,6 +215,25 @@ declare global {
         threshold: number;
         changePercent?: number;
     };
+
+    type MarketNewsArticle = {
+        source?: string;
+        headline?: string;
+        summary?: string;
+        url?: string;
+        datetime?: string | number;
+        [key: string]: any;
+    };
+
+    type UserForNewsEmail = {
+        email: string;
+        name?: string;
+        country?: string;
+        investmentGoals?: string;
+        riskTolerance?: string;
+        preferredIndustry?: string;
+        [key: string]: any;
+    }
 }
 
-export {};
+export { };
