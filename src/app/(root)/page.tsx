@@ -1,8 +1,11 @@
+import { onBoardUser } from '@/modules/auth/actions';
 import TradingViewWidget from '@/modules/charts/components/trading-view-widget';
+import SetUpModel from '@/modules/home/components/setup-model';
 import { MARKET_DATA_WIDGET_CONFIG, MARKET_OVERVIEW_WIDGET_CONFIG, TOP_STORIES_WIDGET_CONFIG } from '@/modules/utils';
 
-const Home = () => {
+const Home = async () => {
   const scriptUrl = "https://s3.tradingview.com/external-embedding/embed-widget-";
+  const user = await onBoardUser();
   return (
     <div className='flex min-h-screen home-wrapper'>
       <section className='grid w-full gap-8 home-section'>
@@ -44,6 +47,7 @@ const Home = () => {
           />
         </div>
       </section>
+      <SetUpModel user={user?.user!} />
     </div>
   )
 }
