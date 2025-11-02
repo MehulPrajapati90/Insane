@@ -3,8 +3,9 @@
 import { usePathname } from 'next/navigation';
 import { NAV_ITEMS } from '@/modules/utils';
 import Link from 'next/link';
+import SearchCommand from './search-command';
 
-const NavItems = () => {
+const NavItems = ({ initialStocks }: { initialStocks: StockWithWatchlistStatus[] }) => {
   const pathname = usePathname();
   const isActive = (path: string) => {
     if (path === '/') return pathname === '/'
@@ -12,13 +13,23 @@ const NavItems = () => {
   }
   return (
     <ul className='flex flex-col sm:flex-row p-2 gap-3 sm:gap-10 font-medium '>
-      {NAV_ITEMS.map(({ href, title }) => (
-        <li key={href}>
+      {NAV_ITEMS.map(({ href, title }) => {
+        if (href === '/search') return (
+          <li key="search-tigger">
+            <SearchCommand
+              renderAs="text"
+              label="Search"
+              initialStocks={initialStocks}
+            />
+          </li>
+        )
+
+        return <li key={href}>
           <Link href={href} className={`hover:text-yellow-500 transition-colors ${isActive(href) ? 'text-gray-100' : ''}`}>
             {title}
           </Link>
         </li>
-      ))}
+      })}
     </ul>
   )
 }

@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import NavItems from "./nav-items";
 import { SignOutButton, useUser } from "@clerk/nextjs";
 
-const UseDropDown = () => {
+const UseDropDown = ({ initialStocks }: { initialStocks: StockWithWatchlistStatus[] }) => {
     const router = useRouter();
     const handleSignOut = async () => {
         router.push('/sign-in');
@@ -45,7 +45,7 @@ const UseDropDown = () => {
                 </DropdownMenuItem>
                 <DropdownMenuSeparator className="sm:hidden block bg-gray-600" />
                 <nav className="sm:hidden">
-                    <NavItems />
+                    <NavItems initialStocks={ initialStocks } />
                 </nav>
             </DropdownMenuContent>
         </DropdownMenu>
